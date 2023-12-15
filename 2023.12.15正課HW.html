@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Number Guessing Game</title>
+</head>
+<body>
+
+  <script>
+    // Generate a random number between 1 and 10
+    var rand = Math.floor((Math.random() * 10) + 1);
+
+    // Function to play the number guessing game
+    function playGuessingGame() {
+      // Initial prompt to get the first guess
+      var userGuess = parseInt(window.prompt("Guess the number between 1 and 10:"));
+
+      // Use a while loop to keep prompting until the correct number is guessed
+      while (userGuess !== rand) {
+        // Check if the user clicked "Cancel" in the prompt
+        if (userGuess === null) {
+          alert("Game canceled. The correct number was " + rand + ".");
+          return;
+        }
+
+        // Check if the user entered a valid number
+        if (isNaN(userGuess) || userGuess < 1 || userGuess > 10) {
+          alert("Please enter a valid number between 1 and 10!");
+        } else {
+          alert("Incorrect! Try again.");
+        }
+
+        // Prompt again for the next guess
+        userGuess = parseInt(window.prompt("Guess the number between 1 and 10:"));
+      }
+
+      // If the correct number is guessed, display a success message
+      alert("Congratulations! You guessed the correct number: " + rand + ".");
+    }
+
+    // Call the function to start the game
+    playGuessingGame();
+  </script>
+
+</body>
+</html>
